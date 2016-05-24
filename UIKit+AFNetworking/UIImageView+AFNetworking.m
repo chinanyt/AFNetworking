@@ -102,6 +102,7 @@
         [self clearActiveDownloadInformation];
     } else {
         if (placeholderImage) {
+            self.contentMode = UIViewContentModeCenter;
             self.image = placeholderImage;
         }
 
@@ -113,6 +114,8 @@
                    withReceiptID:downloadID
                    success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull responseObject) {
                        __strong __typeof(weakSelf)strongSelf = weakSelf;
+                       strongSelf.contentMode = UIViewContentModeScaleAspectFill;
+
                        if ([strongSelf.af_activeImageDownloadReceipt.receiptID isEqual:downloadID]) {
                            if (success) {
                                success(request, response, responseObject);
