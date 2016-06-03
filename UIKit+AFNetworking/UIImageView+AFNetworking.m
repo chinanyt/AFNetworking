@@ -94,6 +94,7 @@
     //Use the image from the image cache if it exists
     UIImage *cachedImage = [imageCache imageforRequest:urlRequest withAdditionalIdentifier:nil];
     if (cachedImage) {
+        self.contentMode = UIViewContentModeScaleAspectFill;
         if (success) {
             success(urlRequest, nil, cachedImage);
         } else {
